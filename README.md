@@ -7,7 +7,8 @@ Installation
 ```bash
 #copy this command and paste in your terminal
 
-git clone https://github.com/PEAKYCOMMAND/Zorin-OS-Pro && cd zorin-os-premium && sudo ./zorin.sh
+git clone https://github.com/PEAKYCOMMAND/Zorin-OS-Pro && cd Zorin-OS-Pro && sudo ./zorin.sh
+
 
 #put your password and wait for your PC to restart
 
