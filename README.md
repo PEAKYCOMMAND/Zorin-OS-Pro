@@ -7,7 +7,7 @@ You will have access to all Zorin OS Pro wallpapers and layouts
 </p>
 
 <p align="center">
-<img width="700" src="      ">
+<img width="700" src="https://user-images.githubusercontent.com/91558914/184501028-9958ac42-0cfb-4870-bf56-8ce24e6437f0.png">
 </p>
 
 Installation:
