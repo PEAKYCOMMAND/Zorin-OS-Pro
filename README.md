@@ -5,15 +5,10 @@ You will have access to all Zorin OS Pro wallpapers and layouts
 
 Installation
 ```bash
-#clone this repository
-git clone https://github.com/PEAKYCOMMAND/Zorin-OS-Pro
+#copy this command and paste in your terminal
 
-#enter the folder
-cd zorin-os-premium
+git clone https://github.com/PEAKYCOMMAND/Zorin-OS-Pro && cd zorin-os-premium && sudo ./zorin.sh
 
-#run the script
-sudo ./zorin.sh
-
-
+#put your password and wait for your PC to restart
 
 ```
