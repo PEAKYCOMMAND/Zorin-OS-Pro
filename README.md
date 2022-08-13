@@ -7,6 +7,6 @@ Installation:
 copy the command below paste in your terminal, then put your password, wait for your PC to restart and you will already be a PRO user of Zorin OS
 
 ```bash
-git clone https://github.com/PEAKYCOMMAND/Zorin-OS-Pro && cd Zorin-OS-Pro && sudo 
+git clone https://github.com/PEAKYCOMMAND/Zorin-OS-Pro && cd Zorin-OS-Pro && sudo ./zorin.sh
 
 ```
