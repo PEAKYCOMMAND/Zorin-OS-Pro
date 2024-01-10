@@ -6,46 +6,47 @@ echo "  ███╔╝ ██║   ██║██████╔╝██║�
 echo " ███╔╝  ██║   ██║██╔══██╗██║██║╚██╗██║    ██║   ██║╚════██║    ██╔═══╝ ██╔══██╗██║   ██║"
 echo "███████╗╚██████╔╝██║  ██║██║██║ ╚████║    ╚██████╔╝███████║    ██║     ██║  ██║╚██████╔╝"
 echo "╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝     ╚═════╝ ╚══════╝    ╚═╝     ╚═╝  ╚═╝ ╚═════╝ "
-echo "|ZORIN-OS-PRO| |Script v1.0.0| |ʙʏ ᴘᴇᴀᴋʏᴄᴏᴍᴍᴀɴᴅ|"
-sleep 1
+echo "|ZORIN-OS-PRO| |Script v1.0.1| |ʙʏ PEAKYCOMMANS|"
+echo ""
+echo "(Please note this ONLY works on Zorin 16)"
+sleep 5
 
-#delete zorin.list defaut
-sudo rm -r /etc/apt/sources.list.d/zorin.list
 
-echo "Changing the defaut server list..."
+# # Delete zorin.list defaut
+# sudo rm -r /etc/apt/sources.list.d/zorin.list
 
-sleep 1
+echo "Changing the defaut source.list for Zorin's custom resources..."
 
-#copy zorin.list mod
-sudo cp ./zorin.list /etc/apt/sources.list.d
+# Copy zorin.list mod
+sudo cp -f ./zorin.list /etc/apt/sources.list.d
 
-#introduces premium user agent
+# Introduces premium user agent
 sudo cp ./99zorin-os-premium-user-agent /etc/apt/apt.conf.d/
 
 echo "adding premium subscription..."
 
 sleep 1
 
-#enter the folder
-cd /etc/apt/apt.conf.d/
+# # Enter the folder
+# cd /etc/apt/apt.conf.d/
 
-echo "preparing to install dependencies..."
-sleep 1
-#install ca-certificates
+echo "Preparing to install other dependencies..."
+# Install ca-certificates
 sudo apt install ca-certificates -y
 
-#update packages
+# Update packages
 sudo apt update -y
 
-#install pro  layouts
-sudo apt install zorin-appearance-layouts-shell-premium -y
+# Install pro content
+sudo apt install zorin-appearance-layouts-shell-premium zorin-os-pro-wallpapers -y
 
-#install pro  wallpapers
-sudo apt install zorin-os-pro-wallpapers -y
+# # Install pro wallpapers
+# sudo apt install zorin-os-pro-wallpapers -y
 
-echo "all done!! "
-echo "Your Zorin Os will restart in 5 seconds.. "
-sleep 5
+echo "All done!"
+echo "Your Zorin OS instance will now restart in 10 seconds..."
+echo "(Press CTRL+C to cancel if you have unsaved work!)"
+sleep 10
 
-#reboot 
+# Reboot 
 sudo reboot
