@@ -6,51 +6,72 @@ echo "  ███╔╝ ██║   ██║██████╔╝██║�
 echo " ███╔╝  ██║   ██║██╔══██╗██║██║╚██╗██║    ██║   ██║╚════██║    ██╔═══╝ ██╔══██╗██║   ██║"
 echo "███████╗╚██████╔╝██║  ██║██║██║ ╚████║    ╚██████╔╝███████║    ██║     ██║  ██║╚██████╔╝"
 echo "╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝     ╚═════╝ ╚══════╝    ╚═╝     ╚═╝  ╚═╝ ╚═════╝ "
-echo "|ZORIN-OS-PRO| |Script v1.0.1| |BY PEAKYCOMMANS|"
+echo "|ZORIN-OS-PRO| |Script v3.0.0| |Made By PEAKYCOMMAND| |Overhauled By NamelessNanasi/CortezJEL|"
 echo ""
-echo "(Please note this ONLY works on Zorin 16)"
-sleep 5
+echo "(Please note this version ONLY works on Zorin 17 and 16)"
+echo "(to use this script on Zorin 16 add the -6 flag or -7 to manually override to zorin 17 although that should be redundant)"
+sleep 10
 
+# Prompt user
+echo "Please Enter your sudo password!"
 
-# # Delete zorin.list defaut
-# sudo rm -r /etc/apt/sources.list.d/zorin.list
+# Sudo echo so it always propts here
+sudo echo > /dev/null
+
+# Parse command line arguments for flag
+while getopts "67" opt; do
+  case $opt in
+    6)
+        sixteen="true"
+    ;;
+    7)
+        sixteen="false"
+    ;;
+    esac
+done
+
+echo "Preparing to install dependencies..."
+
+# Install ca-certificates
+sudo apt install ca-certificates aptitude
+
+sleep 2
 
 echo "Updating the defaut source.list for Zorin's custom resources..."
 
-# Copy zorin.list mod
-sudo cp -f ./zorin.list /etc/apt/sources.list.d
+if [ "$sixteen" = "true" ]; then   
+            # Copy zorin16.list mod
+            sudo cp -f ./zorin16.list /etc/apt/sources.list.d/zorin.list
+            # Add the required apt-key to be safe
+            curl -sS https://packages.zorinos.com/zorin_os_key.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/Zorin.gpg
+        else
+            # Copy zorin17.list mod
+            sudo cp -f ./zorin17.list /etc/apt/sources.list.d/zorin.list
+            # Add the required apt-key to be safe
+            curl -sS https://packages.zorinos.com/zorin_os_key.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/Zorin.gpg
+fi
 
-echo "Adding premium identity file..."
+sleep 2
 
-# Introduces premium user agent
-sudo cp ./99zorin-os-premium-user-agent /etc/apt/apt.conf.d/
+echo "adding premium flags..."
 
-sleep 1
+# introduces premium user agent
+sudo cp -f ./99zorin-os-premium-user-agent /etc/apt/apt.conf.d/
 
-# # Enter the folder
-# cd /etc/apt/apt.conf.d/
-
-echo "Preparing to install other dependencies..."
-
-# Install ca-certificates
-sudo apt install ca-certificates -y
-
-# Update packages
-sudo apt update -y
-
+sleep 2
 
 echo "Adding premium content..."
 
-# Install pro content
-sudo apt install zorin-appearance-layouts-shell-premium zorin-os-pro-wallpapers -y
+# update packages
+sudo aptitude update
 
-# # Install pro wallpapers
-# sudo apt install zorin-os-pro-wallpapers -y
+if [ "$sixteen" = "true" ]; then   
+            # install 16 pro content
+            sudo aptitude install zorin-os-pro zorin-os-pro-creative-suite zorin-os-pro-productivity-apps zorin-os-pro-wallpapers zorin-os-pro-wallpapers-16
+        else
+            # install 17 pro content
+            sudo aptitude install zorin-os-pro zorin-os-pro-creative-suite zorin-os-pro-productivity-apps zorin-os-pro-wallpapers zorin-os-pro-wallpapers-17
+fi
 
 echo "All done!"
-echo "Your Zorin OS instance will now restart in 10 seconds..."
-echo "(Press CTRL+C to cancel if you have unsaved work!)"
-sleep 10
-
-# Reboot 
-sudo reboot
+echo 'Please Reboot your Zorin Instance... you can do so with "sudo reboot"'
