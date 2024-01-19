@@ -17,3 +17,4 @@ copy the command below, paste in your terminal, then put your password, wait for
 git clone https://github.com/PEAKYCOMMAND/Zorin-OS-Pro && cd Zorin-OS-Pro && chmod +x zorin.sh && sudo ./zorin.sh
 
 ```
+CREDITS: NamelessNanasi/CortezJEL
